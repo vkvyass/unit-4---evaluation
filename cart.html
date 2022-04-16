@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+</head>
+<style>
+    #checkout {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    #image {
+        width: 100%;
+        height: 230px;
+    }
+
+    .total {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    #cuppon{
+        margin-top: 30px;
+        margin-left: 30px;
+    }
+
+    body {
+        margin: 0%;
+        padding: 0%;
+    }
+
+    #navbar {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        background-color: blue;
+    }
+
+    #logo {
+        margin-left: 30px;
+    }
+
+
+    #nav>ul>a {
+        padding-left: 30px;
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+        font-size: 20px;
+    }
+
+    #nav {
+        margin-top: 15px;
+    }
+
+    #address{
+        align-items: center;
+        width: 50%;
+        margin: auto;
+    }
+</style>
+
+<body>
+    <div id="navbar">
+        <div id="logo">
+            <h1>ECOMMERCE</h1>
+        </div>
+        <div id="nav">
+            <ul>
+                <a href="products.html">Product</a>
+                <a href="cart.html">cart</a>
+            </ul>
+        </div>
+    </div>
+
+    <div id="cuppon">
+
+    </div>
+    <p class="total"></p>
+    <div id="checkout"></div>
+    <div id="address">
+
+    </div>
+</body>
+<script>
+    var cartData = JSON.parse(localStorage.getItem('cartData'));
+
+    var totalSum = cartData.reduce(function (sum, ele, index, arr) {
+        return sum + Number(ele.price);
+    }, 0);
+    var totalItems = cartData.length;
+    document.querySelector('p').innerText = 'You have ' + " " + totalItems + " " + "items" + " " + "in your cart and total is  " + " :- " + totalSum;
+
+
+    if (totalItems > 0) {
+        var promocode = document.createElement("input");
+        promocode.setAttribute("type", "text");
+        promocode.setAttribute("placeholder", "masai80");
+        promocode.setAttribute("id", "promocode")
+
+        var promoButton = document.createElement("input");
+        promoButton.setAttribute("type", "submit");
+        promoButton.setAttribute("value", "Apply Promo");
+        promoButton.setAttribute("id", "promo")
+
+        promoButton.addEventListener("click", function () {
+            event.preventDefault();
+            var val = document.querySelector("#promocode").value;
+            var persent = Math.floor((totalSum * 30) / 100);
+            var newTotal = totalSum - persent;
+            console.log(val)
+            if (val == "masai30") {
+                alert("Promocode Applied successfully")
+                document.querySelector('p').innerText = 'You have ' + " " + totalItems + " " + "items" + " " + "in your cart and total is " + ":-  " + newTotal;
+            }
+            else {
+                alert("Wrong Promocode");
+                document.querySelector('p').innerText = 'You have ' + " " + totalItems + " " + "items" + " " + "in your cart and total is " + ":-  " + totalSum;
+            }
+        });
+
+
+        document.querySelector("#cuppon").append(promocode, promoButton)
+    }
+
+
+    if (totalItems > 0) {
+        var address = document.createElement("input");
+        address.setAttribute("type", "submit");
+        address.setAttribute("value", "Checkout");
+        address.setAttribute("id", "submit");
+        address.style.marginTop="30px";
+        address.style.width="80%";
+        address.style.backgroundColor="black";
+        address.style.color="white";
+
+        address.addEventListener("click", function () {
+            window.location.href="checkout.html";
+        })
+
+        document.querySelector("#address").append(address);
+    }
+
+
+
+
+    cartData.forEach((cartItem, cartIndex) => {
+
+        var box = document.createElement('div');
+        box.setAttribute('class', 'box')
+
+        var img = document.createElement('img');
+        img.src = cartItem.image_url;
+        img.setAttribute("id", "image");
+
+
+        var name = document.createElement('p');
+        name.textContent = cartItem.name;
+
+        var price = document.createElement('p');
+        price.innerText = cartItem.price;
+
+        var cartButton = document.createElement('button');
+        cartButton.innerText = 'Remove from cart';
+
+        cartButton.addEventListener('click', function () {
+            cartData.splice(cartIndex, 1)
+            localStorage.setItem('cartData', JSON.stringify(cartData));
+            window.location.reload();
+        });
+
+        box.append(img, name, price, cartButton);
+        document.querySelector('#checkout').append(box)
+    });
+</script>
+
+</html>

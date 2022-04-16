@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    
+    <style>
+
+        .leftPart {
+            margin-right: 2%;
+            display: grid;
+            height: auto;
+            width: 20%;
+            float: left;
+            padding: 10px;
+            cursor: pointer;
+            position: fixed;
+
+        }
+
+
+        .rightPart {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            height: auto;
+            gap: 25px;
+            width: 65%;
+            margin-left: 25%;
+        }
+
+        .product {
+            width: 100%;
+            height: 330px;
+        }
+
+        .fliterpart1 {
+            display: grid;
+        }
+
+        select {
+            border: none;
+        }
+
+        option {
+            border: none;
+        }
+
+
+        .classFilter {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        #filter {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .fill {
+            margin-bottom: -20px;
+        }
+
+        #clear {
+            color: teal;
+        }
+
+
+        #navbar {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            background-color: blue;
+        }
+
+        #logo {
+            margin-left: 30px;
+        }
+
+
+        #nav>ul>a {
+            padding-left: 30px;
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 20px;
+        }
+
+        #nav {
+            margin-top: 15px;
+        }
+
+
+        @media all and (min-width:10px) and (max-width:450px) {
+            .leftPart {
+
+                width: 80%;
+                float: none;
+                position: sticky;
+
+            }
+
+            .rightPart {
+
+                grid-template-columns: repeat(1, 1fr);
+                gap: 25px;
+                width: 90%;
+                margin-top: 50px;
+                margin-left: 0%;
+
+            }
+
+            .leftsort {
+
+                margin-top: 30px;
+            }
+        }
+
+        @media all and (min-width:450px) and (max-width:850px) {
+            .leftPart {
+
+                width: 80%;
+                float: none;
+                position: sticky;
+
+            }
+
+            .rightPart {
+
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+                width: 90%;
+                margin-top: 50px;
+                margin-left: 0%;
+
+            }
+
+            .leftsort {
+
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar">
+        <div id="logo">
+            <h1>ECOMMERCE</h1>
+        </div>
+        <div id="nav">
+            <ul>
+                <a href="products.html">Product</a>
+                <a href="cart.html">cart</a>
+            </ul>
+        </div>
+    </div>
+    <h1 id="menheading">Men Clothing &nbsp;(15)</h1>
+    <div class="fullPart">
+        <div class="leftPart">
+            <div id="filter">
+                <div class="fill">
+                    <h4>FILTERS</h4>
+                </div>
+                <div class="fill">
+                    <h5 id="clear">Clear</h5>
+                </div>
+            </div>
+            <div class="fliterpart1">
+                <select name="Ratings" id="Ratings" class="classFilter">
+                    <option value="Ratings">Ratings</option>
+                    <option value="HightoLow">High to Low</option>
+                    <option value="LowtoHigh">Low to High</option>
+                </select>
+                <select name="Sort By" id="SortByTop" class="leftsort ">
+                    <option value="SortBy">Sort By</option>
+                    <option value="HightoLow">Price : High to Low</option>
+                    <option value="LowtoHigh">Price : Low to High</option>
+                </select>
+            </div>
+        </div>
+        <div class="rightPart">
+
+        </div>
+
+    </div>
+
+
+</body>
+
+<script>
+
+
+var data = [
+    {
+      name: "SAMSUNG Galaxy F12",
+      rating: 4,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/kn22m4w0/mobile/a/q/8/galaxy-f12-sm-f127gzgiins-samsung-original-imagftmjw3xqg4yk.jpeg?q=70",
+      price: 11499,
+    },
+    {
+      name: "SAMSUNG Galaxy F42",
+      rating: 4.2,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/ku4ezrk0/mobile/v/5/e/galaxy-f42-5g-sm-e426bzahins-samsung-original-imag7anfwxsgumgz.jpeg?q=70",
+      price: 12199,
+    },
+    {
+      name: "Apple Iphone 12",
+      rating: 4.6,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/kg8avm80/mobile/r/h/z/apple-iphone-12-dummyapplefsn-original-imafwg8dqgncgbcb.jpeg?q=70",
+      price: 59999,
+    },
+    {
+      name: "APPLE iPhone 12 Mini",
+      rating: 4.5,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/kg8avm80/mobile/d/g/b/apple-iphone-12-mini-dummyapplefsn-original-imafwgbfhfevaajh.jpeg?q=70",
+      price: 49999,
+    },
+    {
+      name: "OPPO A12",
+      rating: 3.8,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/kb1470w0/mobile/q/g/g/oppo-a12-cph2083-original-imafsh2hfkyamqyt.jpeg?q=70",
+      price: 9490,
+    },
+    {
+      name: "ASUS ROG Phone 3",
+      rating: 4.9,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/kcuug7k0/mobile/g/h/e/asus-rog-phone-3-zs661ks-6a006in-original-imaftwc6nmyuyekd.jpeg?q=70",
+      price: 46999,
+    },
+    {
+      name: "DIZO Star 300",
+      rating: 3.4,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/kqpj4i80/mobile/e/i/r/star-300-dh2001-dizo-original-imag4nmpv7zahzs2.jpeg?q=70",
+      price: 1299,
+    },
+    {
+      name: "Micromax IN Note 1 ",
+      rating: 4.4,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/ku5ufm80/mobile/v/t/1/in-note-1-e7746-micromax-original-imag7cdgz6tqychm.jpeg?q=70",
+      price: 10999,
+    },
+    {
+      name: "SAMSUNG Galaxy Z Fold3 5G",
+      rating: 4,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/ksqeky80/mobile/x/7/1/galaxy-z-fold3-5g-sm-f926bzgdinu-samsung-original-imag68q6hpdwmngw.jpeg?q=70",
+      price: 149999,
+    },
+  ];
+
+
+    var filterdData = JSON.parse(JSON.stringify(data));
+
+    //sorting top button function
+
+    document.querySelector('#SortByTop').addEventListener('change', function () {
+        var sortType = document.querySelector('#SortByTop').value;
+        if (sortType === 'SortBy') {
+            displayData(data);
+        }
+        else if (sortType == "LowtoHigh") {
+            filterdData.sort(function (a, b) { return a.price - b.price });
+            displayData(filterdData);
+        }
+        else if (sortType == "HightoLow") {
+            filterdData.sort(function (a, b) { return b.price - a.price });
+            displayData(filterdData);
+        }
+    });
+
+    document.querySelector('#Ratings').addEventListener('change', function () {
+        var sortType = document.querySelector('#Ratings').value;
+        if (sortType === 'Ratings') {
+            displayData(data);
+        }
+        else if (sortType == "LowtoHigh") {
+            filterdData.sort(function (a, b) { return a.rating - b.rating });
+            displayData(filterdData);
+        }
+        else if (sortType == "HightoLow") {
+            filterdData.sort(function (a, b) { return b.rating - a.rating });
+            displayData(filterdData);
+        }
+    });
+
+    var cartData;
+
+    if (localStorage.getItem('cartData') === null) {
+        cartData = [];
+    } else {
+        cartData = JSON.parse(localStorage.getItem('cartData'));
+    }
+
+    function displayData(data) {
+        document.querySelector('.rightPart').innerHTML = '';
+        data.forEach(function (data) {
+
+            var box = document.createElement('div');
+            box.setAttribute('class', 'box');
+            box.style.cursor = "pointer";
+
+            var img = document.createElement('img');
+            img.src = data.image_url;
+            img.setAttribute("class", "product")
+
+
+            var name = document.createElement('p');
+            name.textContent = data.name;
+            name.setAttribute("id", "center");
+
+            var price = document.createElement('p');
+            price.innerText = "₹" + " " + data.price;
+
+            var rating = document.createElement('p');
+            rating.innerText = "rating"+":"+ data.rating;
+            rating.style.backgroundColor = "#e9f0ea";
+
+
+            var cartButton = document.createElement('button');
+            cartButton.innerText = 'Add to cart';
+            cartButton.style.width = "100%";
+            cartButton.style.backgroundColor = "black";
+            cartButton.style.color = "white";
+            cartButton.style.cursor="pointer";
+
+            cartButton.addEventListener('click', function () {
+                cartData.push(data);
+                console.log(data);
+                alert("item added successfuly to cart");
+                localStorage.setItem('cartData', JSON.stringify(cartData));
+            });
+
+
+            box.append(img, name, price, rating, cartButton);
+            document.querySelector('.rightPart').append(box)
+        });
+
+    }
+    displayData(data);
+
+
+
+    // filter clear function
+
+    document.querySelector("#clear").addEventListener("click", function () {
+        window.location.reload();
+    })
+
+</script>
+
+</html>

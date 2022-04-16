@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address</title>
+    <style>
+
+
+        #navbar {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            background-color: blue;
+        }
+
+        #logo {
+            margin-left: 30px;
+        }
+
+
+        #nav>ul>a {
+            padding-left: 30px;
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 20px;
+        }
+
+        #nav {
+            margin-top: 15px;
+        }
+
+
+        form {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            height: 300px;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="logo">
+            <h1>ECOMMERCE</h1>
+        </div>
+        <div id="nav">
+            <ul>
+                <a href="products.html">Product</a>
+                <a href="cart.html">cart</a>
+            </ul>
+        </div>
+    </div>
+
+    <div>
+        <h1>Enter your Address details</h1>
+        <form>
+            <input type='number' placeholder="Mobile number" id="cardNumber" required/>
+            <input type='text' placeholder="Enter your name" id="name" required/>
+            <input type='text' placeholder="Enter your address" id="address" required/>
+            <select id="countries" required>
+                <option>India</option>
+                <option>USA</option>
+                <option>Canada</option>
+                <option>Others</option>
+            </select>
+            <div>
+                <input type='text' placeholder="City" id="City" required/>
+                <input type='number' placeholder="Zipcode" required/>
+            </div>
+            <input type="submit" value="Next"  id="next"/>
+        </form>
+    </div>
+</body>
+
+<script>
+    document.querySelector('form').addEventListener('submit', function () {
+        event.preventDefault();
+        window.location.href="payment.html";
+    });
+</script>
+</html>
